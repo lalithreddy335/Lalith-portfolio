@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lalith Reddy — Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0d0f;
+    --bg2: #141417;
+    --bg3: #1c1c21;
+    --border: rgba(255,255,255,0.08);
+    --border-hover: rgba(255,255,255,0.15);
+    --text: #f0f0f2;
+    --muted: #888893;
+    --accent: #6366f1;
+    --accent2: #818cf8;
+    --accent-bg: rgba(99,102,241,0.1);
+    --accent-border: rgba(99,102,241,0.25);
+    --green: #22d3a5;
+    --green-bg: rgba(34,211,165,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw; height: 60px;
+    background: rgba(13,13,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600; font-size: 17px;
+    color: var(--text); text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent2); }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none; font-size: 14px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* SECTIONS */
+  section { padding: 100px 5vw; max-width: 1100px; margin: 0 auto; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding-top: 120px; padding-bottom: 60px;
+    max-width: 1100px; margin: 0 auto; padding-left: 5vw; padding-right: 5vw;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent-bg); border: 1px solid var(--accent-border);
+    border-radius: 100px; padding: 5px 14px;
+    font-size: 13px; color: var(--accent2);
+    margin-bottom: 2rem;
+  }
+  .hero-eyebrow-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--green); flex-shrink: 0;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 700; line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 .name { color: var(--text); }
+  .hero h1 .role {
+    color: transparent;
+    background: linear-gradient(135deg, var(--accent2), var(--green));
+    -webkit-background-clip: text; background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 17px; color: var(--muted);
+    max-width: 540px; margin-bottom: 2.5rem; line-height: 1.7;
+  }
+
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 3.5rem; }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: #fff;
+    padding: 11px 22px; border-radius: 10px;
+    font-size: 14px; font-weight: 500; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: var(--text);
+    border: 1px solid var(--border-hover);
+    padding: 11px 22px; border-radius: 10px;
+    font-size: 14px; font-weight: 500; text-decoration: none;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .btn-secondary:hover { border-color: var(--accent-border); transform: translateY(-1px); }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; flex-wrap: wrap;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat-item {}
+  .stat-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem; font-weight: 700; color: var(--text);
+    line-height: 1.1;
+  }
+  .stat-label { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+  /* SECTION LABEL */
+  .section-eyebrow {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent2);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700; line-height: 1.2; letter-spacing: -0.01em;
+    margin-bottom: 1rem; color: var(--text);
+  }
+
+  .section-desc { color: var(--muted); font-size: 16px; max-width: 520px; margin-bottom: 3rem; }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+  }
+
+  .skill-cell {
+    background: var(--bg2);
+    padding: 1.5rem;
+    transition: background 0.2s;
+  }
+  .skill-cell:hover { background: var(--bg3); }
+
+  .skill-category {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent2);
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .tag {
+    font-size: 12px; padding: 4px 10px;
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 6px; color: var(--muted);
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .project-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 1.75rem;
+    display: flex; flex-direction: column;
+    transition: border-color 0.2s, transform 0.2s;
+    text-decoration: none;
+    position: relative; overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--green));
+    opacity: 0; transition: opacity 0.2s;
+  }
+  .project-card:hover { border-color: var(--border-hover); transform: translateY(-3px); }
+  .project-card:hover::before { opacity: 1; }
+
+  .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+
+  .project-icon {
+    width: 42px; height: 42px; border-radius: 10px;
+    background: var(--accent-bg); border: 1px solid var(--accent-border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+
+  .project-badge {
+    font-size: 11px; padding: 3px 9px;
+    border-radius: 100px;
+    font-weight: 500;
+  }
+  .badge-live { background: var(--green-bg); color: var(--green); border: 1px solid rgba(34,211,165,0.2); }
+  .badge-academic { background: var(--accent-bg); color: var(--accent2); border: 1px solid var(--accent-border); }
+  .badge-research { background: rgba(250,204,21,0.08); color: #fbbf24; border: 1px solid rgba(251,191,36,0.2); }
+
+  .project-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px; font-weight: 600; color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  .project-desc { font-size: 14px; color: var(--muted); line-height: 1.6; flex: 1; }
+
+  .project-metrics {
+    display: flex; gap: 1rem; margin-top: 1.25rem;
+    padding-top: 1.25rem; border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .metric { font-size: 12px; color: var(--muted); }
+  .metric strong { color: var(--text); font-weight: 500; }
+
+  .project-stack { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 1rem; }
+  .stack-tag {
+    font-size: 11px; padding: 3px 8px;
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 5px; color: var(--muted);
+  }
+
+  /* EXPERIENCE */
+  .exp-timeline { position: relative; }
+  .exp-timeline::before {
+    content: '';
+    position: absolute; left: 20px; top: 0; bottom: 0; width: 1px;
+    background: var(--border);
+  }
+
+  .exp-item {
+    display: flex; gap: 2rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .exp-dot {
+    position: relative; z-index: 1;
+    width: 41px; height: 41px; flex-shrink: 0;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+
+  .exp-content { flex: 1; }
+
+  .exp-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.25rem; }
+
+  .exp-role {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px; font-weight: 600; color: var(--text);
+  }
+
+  .exp-date { font-size: 13px; color: var(--muted); }
+
+  .exp-company { font-size: 14px; color: var(--accent2); margin-bottom: 0.75rem; }
+
+  .exp-bullets { list-style: none; }
+  .exp-bullets li {
+    font-size: 14px; color: var(--muted); line-height: 1.7;
+    padding-left: 1rem; position: relative; margin-bottom: 0.3rem;
+  }
+  .exp-bullets li::before {
+    content: '·'; position: absolute; left: 0;
+    color: var(--accent2);
+  }
+
+  /* EDUCATION */
+  .edu-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 16px; padding: 1.75rem;
+    display: flex; gap: 1.25rem; align-items: flex-start;
+  }
+
+  .edu-icon {
+    width: 48px; height: 48px; flex-shrink: 0;
+    background: var(--accent-bg); border: 1px solid var(--accent-border);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+
+  .edu-degree {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px; font-weight: 600; color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+  .edu-school { font-size: 15px; color: var(--accent2); margin-bottom: 0.5rem; }
+  .edu-meta { font-size: 13px; color: var(--muted); }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .contact-link {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1rem 1.25rem;
+    text-decoration: none; color: var(--text);
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .contact-link:hover { border-color: var(--accent-border); transform: translateY(-2px); }
+
+  .contact-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    background: var(--accent-bg);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+
+  .contact-label { font-size: 12px; color: var(--muted); }
+  .contact-val { font-size: 14px; font-weight: 500; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2.5rem 5vw;
+    border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 13px;
+  }
+
+  .about-box {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 12px 12px 0;
+    padding: 1.5rem 1.75rem;
+    max-width: 640px;
+  }
+  .about-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent2);
+    margin-bottom: 0.6rem;
+  }
+  .about-text {
+    font-size: 15px; color: var(--muted); line-height: 1.75;
+  }
+  .about-text em { color: var(--text); font-style: italic; }
+
+  .btn-resume {
+    font-size: 13px; font-weight: 500;
+    color: var(--accent2); text-decoration: none;
+    border: 1px solid var(--accent-border);
+    padding: 6px 14px; border-radius: 8px;
+    background: var(--accent-bg);
+    transition: background 0.2s;
+  }
+  .btn-resume:hover { background: rgba(99,102,241,0.2); }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    nav .nav-links { display: none; }
+    .hero-stats { gap: 1.5rem; }
+    .exp-timeline::before { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">LR<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="DA_resume_.pdf" download class="btn-resume">↓ Resume</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="about">
+  <h1>
+    <span class="name">Lalith Reddy</span><br>
+    <span class="role">Data Analyst</span>
+  </h1>
+
+  <p class="hero-sub">
+    MS in Business Analytics candidate at University of Rochester's Simon Business School.
+    I turn messy data into clear decisions — through predictive models, dashboards, and deployed ML apps.
+  </p>
+
+  <div class="hero-ctas">
+    <a href="mailto:reddylalith2002@gmail.com" class="btn-primary">
+      ✉ Get in touch
+    </a>
+    <a href="https://github.com/lalithreddy335" target="_blank" class="btn-secondary">
+      ↗ View on GitHub
+    </a>
+  </div>
+
+  <div class="about-box">
+    <div class="about-label">About me</div>
+    <p class="about-text">
+      I'm Lalith, a data analyst based in Rochester, NY, finishing my
+      MS in Business Analytics at Simon Business School. My undergrad was in Business Administration,
+      which shaped how I think about data: always through the lens of
+      <em>so what does this actually mean for the business?</em>
+      <br><br>
+      I get genuinely excited about the moment a messy dataset starts making sense, whether that's
+      writing a SQL query that finally cracks a weird pattern, or watching a model I trained go live
+      as a real app people can use. My churn prediction project is a good example: I didn't just build
+      a model, I deployed it as an interactive Streamlit app so anyone can actually test it.
+      <br><br>
+      Outside of work, I'm into stargazing, and I recently picked up an electric scooter to get around
+      Rochester, which given the winters here, feels like a bold life choice. I'm currently looking
+      for full-time Data Analyst or Data Scientist roles across the US where I can keep building things
+      that matter.
+    </p>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-eyebrow">Skills</div>
+  <h2 class="section-title">Tools I work with</h2>
+  <p class="section-desc">From raw data to production-ready dashboards and ML apps.</p>
+
+  <div class="skills-grid">
+    <div class="skill-cell">
+      <div class="skill-category">Languages</div>
+      <div class="skill-tags">
+        <span class="tag">Python</span>
+        <span class="tag">SQL</span>
+        <span class="tag">R</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-category">ML &amp; Data Science</div>
+      <div class="skill-tags">
+        <span class="tag">XGBoost</span>
+        <span class="tag">Scikit-learn</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">NumPy</span>
+        <span class="tag">PyTorch</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-category">Visualization &amp; BI</div>
+      <div class="skill-tags">
+        <span class="tag">Power BI</span>
+        <span class="tag">Tableau</span>
+        <span class="tag">Streamlit</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-category">Data Engineering</div>
+      <div class="skill-tags">
+        <span class="tag">ETL Pipelines</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">SQLAlchemy</span>
+        <span class="tag">Star Schema</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-category">GIS &amp; Spatial</div>
+      <div class="skill-tags">
+        <span class="tag">ArcGIS</span>
+        <span class="tag">Geocoding</span>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-category">Tools &amp; Cloud</div>
+      <div class="skill-tags">
+        <span class="tag">GitHub</span>
+        <span class="tag">Excel</span>
+        <span class="tag">Jupyter</span>
+        <span class="tag">VS Code</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-eyebrow">Projects</div>
+  <h2 class="section-title">Selected work</h2>
+  <p class="section-desc">Deployed apps and research projects with real, measurable outcomes.</p>
+
+  <div class="projects-grid">
+
+    <a href="https://github.com/lalithreddy335/customer-churn-prediction" target="_blank" class="project-card">
+      <div class="project-header">
+        <div class="project-icon">📉</div>
+        <span class="project-badge badge-live">Live App</span>
+      </div>
+      <div class="project-name">Customer Churn Prediction</div>
+      <div class="project-desc">
+        End-to-end ML pipeline predicting telecom churn. XGBoost model deployed as an interactive Streamlit app with real-time predictions.
+      </div>
+      <div class="project-metrics">
+        <div class="metric"><strong>76%</strong> accuracy</div>
+        <div class="metric"><strong>0.81</strong> AUC-ROC</div>
+        <div class="metric"><strong>Kaggle</strong> Telco dataset</div>
+      </div>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">XGBoost</span>
+        <span class="stack-tag">Streamlit</span>
+        <span class="stack-tag">MySQL</span>
+        <span class="stack-tag">SQLAlchemy</span>
+      </div>
+    </a>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">🌍</div>
+        <span class="project-badge badge-research">Research</span>
+      </div>
+      <div class="project-name">Cardiometabolic Health GIS Study</div>
+      <div class="project-desc">
+        Research assistant role at University of Rochester. Geocoded patient addresses using ArcGIS to analyze spatial patterns in cardiometabolic health outcomes.
+      </div>
+      <div class="project-metrics">
+        <div class="metric"><strong>ArcGIS</strong> geocoding</div>
+        <div class="metric"><strong>Spatial</strong> analysis</div>
+      </div>
+      <div class="project-stack">
+        <span class="stack-tag">ArcGIS</span>
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">Pandas</span>
+        <span class="stack-tag">SQL</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">🈯</div>
+        <span class="project-badge badge-academic">Academic</span>
+      </div>
+      <div class="project-name">English → Spanish Transformer</div>
+      <div class="project-desc">
+        Built a sequence-to-sequence Transformer from scratch in PyTorch for machine translation. Implemented multi-head attention, positional encoding, and beam search decoding.
+      </div>
+      <div class="project-metrics">
+        <div class="metric"><strong>PyTorch</strong> from scratch</div>
+        <div class="metric"><strong>Seq2Seq</strong> architecture</div>
+      </div>
+      <div class="project-stack">
+        <span class="stack-tag">PyTorch</span>
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">NLP</span>
+        <span class="stack-tag">Transformers</span>
+      </div>
+    </div>
+
+    <a href="https://github.com/lalithreddy335/Customer_behavior_Analysis" target="_blank" class="project-card">
+      <div class="project-header">
+        <div class="project-icon">🛒</div>
+        <span class="project-badge badge-live">Live Project</span>
+      </div>
+      <div class="project-name">Customer Behavior Analytics</div>
+      <div class="project-desc">
+        End-to-end analytics pipeline analyzing 3.9K customer records. SQL segmentation revealed discounted products drove the highest purchase frequency. Power BI dashboard identified clothing as the top revenue category.
+      </div>
+      <div class="project-metrics">
+        <div class="metric"><strong>3.9K</strong> records analyzed</div>
+        <div class="metric"><strong>Power BI</strong> dashboard</div>
+      </div>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">MySQL</span>
+        <span class="stack-tag">Power BI</span>
+        <span class="stack-tag">SQL</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+<section id="experience">
+  <div class="section-eyebrow">Experience</div>
+  <h2 class="section-title">Where I've worked</h2>
+  <p class="section-desc">Data roles across industry and research, with a focus on impact.</p>
+
+  <div class="exp-timeline">
+
+    <div class="exp-item">
+      <div class="exp-dot">🎓</div>
+      <div class="exp-content">
+        <div class="exp-header">
+          <div class="exp-role">Data Analyst (Research Assistant)</div>
+          <div class="exp-date">Mar 2025 – Present</div>
+        </div>
+        <div class="exp-company">University of Rochester · Rochester, NY</div>
+        <ul class="exp-bullets">
+          <li>Cleaned and preprocessed census-tract geographic datasets using Python for longitudinal health research</li>
+          <li>Geocoded residential location data using ArcGIS to map environmental hazard exposures across cohort data</li>
+          <li>Applied data validation techniques to resolve dataset inconsistencies, improving quality for spatial analysis</li>
+          <li>Collaborated with research team to support data pipeline workflows for a 30-year cardiometabolic disease study</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-dot">💼</div>
+      <div class="exp-content">
+        <div class="exp-header">
+          <div class="exp-role">Data Analyst</div>
+          <div class="exp-date">Nov 2024 – Jun 2025</div>
+        </div>
+        <div class="exp-company">Highflows IT Solutions · Hyderabad, India</div>
+        <ul class="exp-bullets">
+          <li>Analyzed 500K+ records using Python and SQL (joins, window functions), improving decision-making speed by 30%</li>
+          <li>Automated reporting workflows using Python and Power Query, cutting manual effort by 50% and saving 10+ hrs/week</li>
+          <li>Built Power BI dashboards tracking revenue, churn, and regional KPIs for senior stakeholders</li>
+          <li>Conducted cohort analysis to optimize campaigns and resource allocation, driving 15% efficiency improvement</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-dot">💼</div>
+      <div class="exp-content">
+        <div class="exp-header">
+          <div class="exp-role">Data Analyst Intern</div>
+          <div class="exp-date">Jul 2024 – Oct 2024</div>
+        </div>
+        <div class="exp-company">BornemindZ Software Solutions · Hyderabad, India</div>
+        <ul class="exp-bullets">
+          <li>Analyzed customer and market data using Excel and SQL, uncovering key trends for data-driven decisions</li>
+          <li>Built Tableau dashboards tracking KPIs across 4 business functions, reducing monitoring time by 25%</li>
+          <li>Standardized reporting templates, cutting report generation time by 30% and improving data consistency</li>
+          <li>Translated complex data findings into executive KPI summaries for senior leadership</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-eyebrow">Education</div>
+  <h2 class="section-title">Academic background</h2>
+  <p class="section-desc"></p>
+
+  <div style="display: flex; flex-direction: column; gap: 1rem;">
+    <div class="edu-card">
+      <div class="edu-icon">🏛</div>
+      <div>
+        <div class="edu-degree">MS in Business Analytics (STEM)</div>
+        <div class="edu-school">Simon Business School · University of Rochester</div>
+        <div class="edu-meta">Expected December 2026 · Rochester, NY</div>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-degree">Bachelor of Business Administration</div>
+        <div class="edu-school">Amity University · Mumbai, India</div>
+        <div class="edu-meta">Bachelor of Business Administration · Jun 2024</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-eyebrow">Contact</div>
+  <h2 class="section-title">Let's connect</h2>
+  <p class="section-desc">Open to Data Analyst, Data Scientist, and Data Engineer roles across the US.</p>
+
+  <div class="contact-grid">
+    <a href="mailto:reddylalith2002@gmail.com" class="contact-link">
+      <div class="contact-icon">✉</div>
+      <div>
+        <div class="contact-label">Email</div>
+        <div class="contact-val">reddylalith2002@gmail.com</div>
+      </div>
+    </a>
+    <a href="https://github.com/lalithreddy335" target="_blank" class="contact-link">
+      <div class="contact-icon">🐙</div>
+      <div>
+        <div class="contact-label">GitHub</div>
+        <div class="contact-val">lalithreddy335</div>
+      </div>
+    </a>
+    <a href="https://linkedin.com/in/lalithreddy2002" target="_blank" class="contact-link">
+      <div class="contact-icon">💼</div>
+      <div>
+        <div class="contact-label">LinkedIn</div>
+        <div class="contact-val">lalithreddy2002</div>
+      </div>
+    </a>
+    <a href="DA_resume_.pdf" download class="contact-link">
+      <div class="contact-icon">📄</div>
+      <div>
+        <div class="contact-label">Resume</div>
+        <div class="contact-val">Download PDF</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  Built by Lalith Reddy · 2025 · MS Business Analytics @ Simon Business School
+</footer>
+
+</body>
+</html>
